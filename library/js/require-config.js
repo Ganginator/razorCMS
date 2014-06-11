@@ -9,8 +9,8 @@
  */
  
 require.config({
-    baseUrl: RAZOR_BASE_URL + 'library/js',
-    waitSeconds: 60,
+	baseUrl: RAZOR_BASE_URL + 'library/js',
+	waitSeconds: 60,
 
 	paths: {
 		"angular": "angular/angular_1_2_14.min",
@@ -19,15 +19,14 @@ require.config({
 		"angular-sanitize": "angular/angular-sanitize.min",
 		"angular-cookies": "angular/angular-cookies.min",
 
-		"text-angular": "text-angular/text-angular-custom",
-		"text-angular-sanitize": "text-angular/text-angular-sanitize-custom",
-
 		"ui-bootstrap": "ui-bootstrap/ui-bootstrap-custom-tpls-0.10.0.min",
 
-		"cookie-monster": "cookie-monster/cookie-monster",
+		"cookie-monster": "cookie-monster/cookie-monster.min",
 		
-		"jquery": "jquery/jquery-2.1.0.min",
-		"jquery-bootstrap": "jquery-bootstrap/bootstrap.min"
+		"jquery": "jquery/jquery-1.11.1.min",
+		"jquery-bootstrap": "jquery-bootstrap/bootstrap.min",
+		"summernote": "summernote/summernote-custom.min",
+		"codemirror": "codemirror/codemirror.min"
 	},
 	
 	shim: {
@@ -37,12 +36,10 @@ require.config({
 		"angular-sanitize": { deps: ["angular"] },
 		"angular-cookies": { deps: ["angular"] },
 
-		"text-angular-sanitize": { deps: ["angular"] },
-		"text-angular": { deps: ["angular", "text-angular-sanitize", "ui-bootstrap"] },
-
 		"ui-bootstrap": { deps: ["angular"] },
 		
 		"jquery": { exports: "$" },
-		"jquery-bootstrap": { deps: ["jquery"] }
+		"jquery-bootstrap": { deps: ["jquery"] },
+		"summernote": { deps: ["jquery"]},
 	}
 });

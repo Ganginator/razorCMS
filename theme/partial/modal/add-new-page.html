@@ -1,8 +1,32 @@
 <form name="form" class="form-horizontal" role="form" novalidate>
 	<div class="modal-header">
-	    <h3>Add New Page <i class="fa fa-times pull-right" ng-click="cancel()"></i></h3>
+		<h3>Add New Page <i class="fa fa-times pull-right" ng-click="cancel()"></i></h3>
 	</div>
 	<div class="modal-body">	
+		<div class="form-group">
+			<label for="page-access-level" class="col-sm-3 control-label">Access Level</label>
+			<div class="col-sm-4">
+				<select ng-init="page.access_level = 0" class="form-control" id="page-access-level" ng-model="page.access_level" ng-options="al.value as al.name for al in accessLevels" required></select>
+			</div>
+			<span class="alert alert-info alert-form" ng-if="page.access_level == 5">
+				Logged in user level 5 access.
+			</span>
+			<span class="alert alert-info alert-form" ng-if="page.access_level == 4">
+				Logged in user level 4 access.
+			</span>
+			<span class="alert alert-info alert-form" ng-if="page.access_level == 3">
+				Logged in user level 3 access.
+			</span>
+			<span class="alert alert-info alert-form" ng-if="page.access_level == 2">
+				Logged in user level 2 access.
+			</span>
+			<span class="alert alert-info alert-form" ng-if="page.access_level == 1">
+				Logged in user level 1 access.
+			</span>
+			<span class="alert alert-info alert-form" ng-if="page.access_level == 0">
+				Public access.
+			</span>
+		</div>
 		<div class="form-group">
 			<label for="page-name" class="col-sm-3 control-label">Name</label>
 			<div class="col-sm-7">
@@ -24,10 +48,10 @@
 		<div class="form-group">
 			<label for="page-link" class="col-sm-3 control-label">Link</label>
 			<div class="col-sm-7">
-				<input id="page-link" name="pageLink" class="form-control" type="text" ng-model="page.link" placeholder="Append this to URL to access page" ng-pattern="/^[a-z0-9-_\/]+(\.html|\.htm)?$/" ng-disabled="processing">
+				<input id="page-link" name="pageLink" class="form-control" type="text" ng-model="page.link" placeholder="Append this to URL to access page"ng-pattern="/^(?!.*(login)).*$/" ng-disabled="processing">
 			</div>
 			<div class="col-sm-2 error-block" ng-show="form.pageLink.$dirty && form.pageLink.$invalid">
-				<span class="alert alert-danger alert-form" ng-show="form.pageLink.$error.pattern">Invalid</span>
+				<span class="alert alert-danger alert-form" ng-show="form.pageLink.$error.pattern">Reserved</span>
 			</div>
 		</div>
 		<div class="form-group">

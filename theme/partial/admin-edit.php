@@ -1,15 +1,15 @@
 <!-- admin html -->
 <body id="razor-admin" class="ng-cloak razor-admin" ng-controller="edit" ng-init="init()">
  
-    <!--[if lt IE 9]>
-        <div class="ie8 ie8-admin">
-            <p class="message">
-                <i class="fa fa-exclamation-triangle"></i> You are using an outdated version of Internet Explorer that is not supported, 
-                please update your browser or consider using an alternative, modern browser, such as 
-                <a href="http://www.google.com/chrome">Google Chome</a>.
-            </p>
-        </div>
-    <![endif]-->
+	<!--[if lt IE 9]>
+		<div class="ie8 ie8-admin">
+			<p class="message">
+				<i class="fa fa-exclamation-triangle"></i> You are using an outdated version of Internet Explorer that is not supported, 
+				please update your browser or consider using an alternative, modern browser, such as 
+				<a href="http://www.google.com/chrome">Google Chome</a>.
+			</p>
+		</div>
+	<![endif]-->
 
 	<global-notification></global-notification>
 
@@ -37,7 +37,7 @@
 				<div class="col-xs-6">
 					<div class="account-details text-right" ng-show="user.id">
 						<span class="name">{{user.name}} <a href="#" ng-click="logout()"><i class="fa fa-sign-out" data-toggle="tooltip" data-placement="bottom" title="Sign Out"></i></a></span>
-						<span class="last-login-date">Last login: {{user.last_logged_in}}</span>
+						<span class="last-login-date">Last login: {{user.last_logged_in * 1000 | date:'EEE, MMM d, y'}}</span>
 					</div>
 				</div>
 			</div>

@@ -11,14 +11,21 @@
 // load in bootstrap and fontawesome and configure
 @import "../bootstrap/bootstrap.less";
 @import "../../font/font-awesome/less/font-awesome.less";
+@import "../summernote/elements.less";
+@import "../summernote/summernote.less";
+@import "../codemirror/codemirror.less";
 
 @url-path: "../../../";
 @fa-font-path: "@{url-path}library/font/font-awesome/fonts";
-@font-family-sans-serif:  'Open Sans', Arial;
-@font-family-serif:       Georgia, "Times New Roman", Times, serif;
-@font-family-monospace:   Menlo, Monaco, Consolas, "Courier New", monospace;
-@font-family-base:        @font-family-sans-serif;
-@headings-font-family:    'Open Sans', Arial;
+@font-family-sans-serif: 'Open Sans', Arial;
+@font-family-serif:	Georgia, "Times New Roman", Times, serif;
+@font-family-monospace: Menlo, Monaco, Consolas, "Courier New", monospace;
+@font-family-base: @font-family-sans-serif;
+@headings-font-family: 'Open Sans', Arial;
+@border-radius-base: 0px;
+@border-radius-large: 0px;
+@border-radius-small: 0px;
+
 
 // fix for ui-bootstrap cursor issue
 .nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
@@ -51,6 +58,9 @@ h1, h2, h3, h4, h5, h6 { font-family: @headings-font-family }
 .white { color: white; }
 .black { color: black; }
 .grey { color: grey; }
+
+.span-input { line-height: 35px; }
+.alert-inline-message { padding: 5px; margin: 0px; }
 
 // when not mobile device
 @media (min-width:830px)
@@ -152,23 +162,23 @@ li.dropdown
 }
 
 .btn-file {
-    position: relative;
-    overflow: hidden;
+	position: relative;
+	overflow: hidden;
 }
 .btn-file input[type=file] {
-    position: absolute;
-    top: 0;
-    right: 0;
-    min-width: 100%;
-    min-height: 100%;
-    font-size: 999px;
-    text-align: right;
-    filter: alpha(opacity=0);
-    opacity: 0;
-    outline: none;
-    background: white;
-    cursor: inherit;
-    display: block;
+	position: absolute;
+	top: 0;
+	right: 0;
+	min-width: 100%;
+	min-height: 100%;
+	font-size: 999px;
+	text-align: right;
+	filter: alpha(opacity=0);
+	opacity: 0;
+	outline: none;
+	background: white;
+	cursor: inherit;
+	display: block;
 }
 
 .ie8
@@ -218,11 +228,11 @@ li.dropdown
 	border: 5px solid #444;
 	z-index: 10000;
 
-    animation: slide-up-down 5s forwards;
-    -ms-animation: slide-up-down 5s forwards;
-    -moz-animation: slide-up-down 5s forwards;
-    -webkit-animation: slide-up-down 5s forwards;
-    -o-animation: slide-up-down 5s forwards;
+	animation: slide-up-down 5s forwards;
+	-ms-animation: slide-up-down 5s forwards;
+	-moz-animation: slide-up-down 5s forwards;
+	-webkit-animation: slide-up-down 5s forwards;
+	-o-animation: slide-up-down 5s forwards;
 }	
 
 // click and move css
@@ -365,16 +375,16 @@ li.dropdown
 
 		&.ring-pulse
 		{
-		    animation: ring-pulse 1s ease-in-out;
-		    animation-iteration-count: infinite; 
-		    -ms-animation: ring-pulse 1s ease-in-out;
-		    -ms-animation-iteration-count: infinite; 
-		    -moz-animation: ring-pulse 1s ease-in-out;
-		    -moz-animation-iteration-count: infinite; 
-		    -o-animation: ring-pulse 1s ease-in-out;
-		    -o-animation-iteration-count: infinite; 
-		    -webkit-animation: ring-pulse 1s ease-in-out;
-		    -webkit-animation-iteration-count: infinite; 
+			animation: ring-pulse 1s ease-in-out;
+			animation-iteration-count: infinite; 
+			-ms-animation: ring-pulse 1s ease-in-out;
+			-ms-animation-iteration-count: infinite; 
+			-moz-animation: ring-pulse 1s ease-in-out;
+			-moz-animation-iteration-count: infinite; 
+			-o-animation: ring-pulse 1s ease-in-out;
+			-o-animation-iteration-count: infinite; 
+			-webkit-animation: ring-pulse 1s ease-in-out;
+			-webkit-animation-iteration-count: infinite; 
 		}
 
 		&.ring-active { border-color: #409CCF; }
@@ -384,37 +394,37 @@ li.dropdown
 
 @keyframes ring-pulse 
 {
-    0% { border-color: #ccc; }
-    50% { border-color: #409CCF; }
-    100% { border-color: #ccc; }
+	0% { border-color: #ccc; }
+	50% { border-color: #409CCF; }
+	100% { border-color: #ccc; }
 }
 
 @-ms-keyframes ring-pulse 
 {
-    0% { border-color: #ccc; }
-    50% { border-color: #409CCF; }
-    100% { border-color: #ccc; }
+	0% { border-color: #ccc; }
+	50% { border-color: #409CCF; }
+	100% { border-color: #ccc; }
 }
 
 @-moz-keyframes ring-pulse 
 {
-    0% { border-color: #ccc; }
-    50% { border-color: #409CCF; }
-    100% { border-color: #ccc; }
+	0% { border-color: #ccc; }
+	50% { border-color: #409CCF; }
+	100% { border-color: #ccc; }
 }
 
 @-o-keyframes ring-pulse 
 {
-    0% { border-color: #ccc; }
-    50% { border-color: #409CCF; }
-    100% { border-color: #ccc; }
+	0% { border-color: #ccc; }
+	50% { border-color: #409CCF; }
+	100% { border-color: #ccc; }
 }
 
 @-webkit-keyframes ring-pulse 
 {
-    0% { border-color: #ccc; }
-    50% { border-color: #409CCF; }
-    100% { border-color: #ccc; }
+	0% { border-color: #ccc; }
+	50% { border-color: #409CCF; }
+	100% { border-color: #ccc; }
 }
 
 // admin specific
@@ -631,60 +641,38 @@ li.dropdown
 			.content-block
 			{
 				margin-bottom: 10px;
-			}
+				-webkit-box-shadow: 0 0 5px 0 rgba(0,0,0,0.25);
+				-moz-box-shadow: 0 0 5px 0 rgba(0,0,0,0.25);
+				-ms-box-shadow: 0 0 5px 0 rgba(0,0,0,0.25);
+				-o-box-shadow: 0 0 5px 0 rgba(0,0,0,0.25);
+				box-shadow: 0 0 5px 0 rgba(0,0,0,0.25);
 
-			.content-edit
-			{
-				padding-top: 3px;
-				
-				.ta-toolbar
+				&.active
 				{
-					.btn-group { margin-bottom: 3px };
+					-webkit-box-shadow: 0px 0px 5px 0px rgba(0, 92, 255, 0.5);
+					-moz-box-shadow: 0px 0px 5px 0px rgba(0, 92, 255, 0.5);
+					-ms-box-shadow: 0px 0px 5px 0px rgba(0, 92, 255, 0.5);
+					-o-box-shadow: 0px 0px 5px 0px rgba(0, 92, 255, 0.5);
+					box-shadow: 0px 0px 5px 0px rgba(0, 92, 255, 0.5);
 				}
 
-				&.disabled
-				{					
-					.ta-editor 
+				.content-edit
+				{
+					padding-top: 3px;
+					min-height: 40px;
+					
+					.ta-toolbar
 					{
-						border: 1px solid #ccc;
+						.btn-group { margin-bottom: 3px };
 					}
-				}
-			}
-		}
 
-		.content-edit
-		{
-			background-color: transparent;
-			
-			.ta-editor {
-				background-color: transparent;
-				min-height: 50px;
-				height: auto;
-				overflow: auto;
-				font-family: inherit;
-				font-size: 100%;
-			}
-
-			.ta-html { height: 250px; }
-
-			&.disabled
-			{
-				-webkit-box-shadow: none;
-				-moz-box-shadow: none;
-				-ms-box-shadow: none;
-				-o-box-shadow: none;
-				box-shadow: none;
-				
-				.ta-toolbar { display: none; }
-				.ta-editor 
-				{
-					background-color: transparent;
-					border: none;
-					-webkit-box-shadow: none;
-					-moz-box-shadow: none;
-					-ms-box-shadow: none;
-					-o-box-shadow: none;
-					box-shadow: none;
+					&.disabled
+					{					
+						.ta-editor 
+						{
+							border: 1px solid #ccc;
+						}
+					}
 				}
 			}
 		}
@@ -830,20 +818,20 @@ li.dropdown
 		background-color: #aaa; 
 		border: 2px solid #555; 
 		cursor: pointer;
-		border-radius: 4px;
 
 		.slide-switch-slider
 		{
 			display: block; 
-			height: 27px; 
 			width: 50px; 
 			background-color: #555;
 			float: left;
 			text-align: center;
-			padding-top: 5px;
-			font-size: 11px;
+			font-size: 12px;
+			line-height: 27px;
+			height: 27px;
 			color: #aaa;
-			border-radius: 2px;
+			-webkit-box-sizing: border-box;
+			box-sizing: border-box;
 		}
 
 		&.slide-switch-on
@@ -859,7 +847,7 @@ li.dropdown
 
 		&.slide-switch-disabled
 		{
-			opacity: 0.6;
+			opacity: 0.4;
 			cursor: default;
 		}
 	}
@@ -870,7 +858,6 @@ li.dropdown
 		color: #000; 
 		background-color: #f4f4f4; 
 		border: 1px solid #aaa; 
-		border-radius: 4px; 
 		padding: 2px;
 		position: relative;
 
@@ -897,7 +884,6 @@ li.dropdown
 				background-color: #ddd; 
 				margin: 1px; 
 				padding: 2px 6px; 
-				border-radius: 3px; 
 				display: inline-block;
 				font-weight: bold; 
 				font-size: 14px;
@@ -954,37 +940,37 @@ li.dropdown
 	// slide up then down animation (mainly for notifications)
 	@keyframes slide-up-down 
 	{
-	    0% { bottom:-200px; }  
-	    5% { bottom:-10px; }   
-	    85% { bottom:-10px; }
-	    100% { bottom:-200px; }
+		0% { bottom:-200px; }  
+		5% { bottom:-10px; }   
+		85% { bottom:-10px; }
+		100% { bottom:-200px; }
 	}
 	@-ms-keyframes slide-up-down
 	{
-	    0% { bottom:-200px; }  
-	    5% { bottom:-10px; }   
-	    85% { bottom:-10px; }
-	    100% { bottom:-200px; }
+		0% { bottom:-200px; }  
+		5% { bottom:-10px; }   
+		85% { bottom:-10px; }
+		100% { bottom:-200px; }
 	}
 	@-moz-keyframes slide-up-down
 	{
-	    0% { bottom:-200px; }  
-	    5% { bottom:-10px; }   
-	    85% { bottom:-10px; }
-	    100% { bottom:-200px; }
+		0% { bottom:-200px; }  
+		5% { bottom:-10px; }   
+		85% { bottom:-10px; }
+		100% { bottom:-200px; }
 	}
 	@-webkit-keyframes slide-up-down
 	{
-	    0% { bottom:-200px; }  
-	    5% { bottom:-10px; }   
-	    85% { bottom:-10px; }
-	    100% { bottom:-200px; }
+		0% { bottom:-200px; }  
+		5% { bottom:-10px; }   
+		85% { bottom:-10px; }
+		100% { bottom:-200px; }
 	}
 	@-o-keyframes slide-up-down
 	{
-	    0% { bottom:-200px; }  
-	    5% { bottom:-10px; }   
-	    85% { bottom:-10px; }
-	    100% { bottom:-200px; }
+		0% { bottom:-200px; }  
+		5% { bottom:-10px; }   
+		85% { bottom:-10px; }
+		100% { bottom:-200px; }
 	}
 }
